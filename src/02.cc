@@ -1,3 +1,4 @@
+#include "common.h"
 #include <algorithm>
 #include <iostream>
 #include <functional>
@@ -37,18 +38,14 @@ static bool part2_is_valid(std::size_t start, std::size_t end, char c, const std
 }
 
 int main(int argc, char *argv[]) {
-	if (argc < 2) {
-		std::cerr << "Usage: " << argv[0] << " <1|2>" << std::endl;
-		return 1;
-	}
 	std::function<bool(std::size_t, std::size_t, char, const std::string &)> is_valid_func;
-	if (strncmp(argv[1], "1", 1) == 0) {
+	switch (select_part(argc, argv)) {
+	case 1:
 		is_valid_func = part1_is_valid;
-	} else if (strncmp(argv[1], "2", 1) == 0) {
+		break;
+	case 2:
 		is_valid_func = part2_is_valid;
-	} else {
-		std::cerr << argv[0] << ": invalid argument '" << argv[1] << "'" << std::endl;
-		return 1;
+		break;
 	}
 
 	std::size_t count = 0;

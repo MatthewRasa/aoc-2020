@@ -1,3 +1,4 @@
+#include "common.h"
 #include <iostream>
 #include <vector>
 #include <set>
@@ -35,23 +36,9 @@ static std::vector<uint> read_input() {
 }
 
 int main(int argc, char *argv[]) {
-	if (argc < 2) {
-		std::cerr << "Usage: " << argv[0] << " <1|2>" << std::endl;
-		return 1;
-	}
-
-	bool part1;
-	if (strncmp(argv[1], "1", 1) == 0) {
-		part1 = true;
-	} else if (strncmp(argv[1], "2", 1) == 0) {
-		part1 = false;
-	} else {
-		std::cerr << argv[0] << ": invalid argument '" << argv[1] << "'" << std::endl;
-		return 1;
-	}
-
-	auto input = read_input();
-	if (part1) {
+	auto part = select_part(argc, argv);
+	const auto input = read_input();
+	if (part == 1) {
 		auto [val1, val2] = two_sum(input.begin(), input.end(), 2020);
 		std::cout << (val1 * val2) << std::endl;
 	} else {

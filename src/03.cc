@@ -1,3 +1,4 @@
+#include "common.h"
 #include <iostream>
 #include <vector>
 #include <cstring>
@@ -20,25 +21,13 @@ static std::size_t traverse_map(const std::vector<std::vector<char>> &map, std::
 }
 
 int main(int argc, char *argv[]) {
-	if (argc < 2) {
-		std::cerr << "Usage: " << argv[0] << " <1|2>" << std::endl;
-		return 1;
-	}
-
-	bool part1;
-	if (strncmp(argv[1], "1", 1) == 0) {
-		part1 = true;
-	} else if (strncmp(argv[1], "2", 1) == 0) {
-		part1 = false;
-	} else {
-		std::cerr << argv[0] << ": invalid argument '" << argv[1] << "'" << std::endl;
-		return 1;
-	}
-
+	auto part = select_part(argc, argv);
 	const auto input = read_input();
-	if (part1) {
+	switch (part) {
+	case 1:
 		std::cout << traverse_map(input, 3, 1) << std::endl;
-	} else {
+		break;
+	case 2:
 		std::cout << (
 			traverse_map(input, 1, 1)
 			* traverse_map(input, 3, 1)
@@ -46,5 +35,7 @@ int main(int argc, char *argv[]) {
 			* traverse_map(input, 7, 1)
 			* traverse_map(input, 1, 2)
 		) << std::endl;
+		break;
 	}
+	return 0;
 }
