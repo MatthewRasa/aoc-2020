@@ -12,7 +12,6 @@ CLIST := $(shell find src -name "*.cc")
 OLIST := $(CLIST:src/%.cc=obj/%.o)
 BLIST := $(OLIST:obj/%.o=bin/%)
 BLIST := $(shell printf "%s\n" $(BLIST) | grep -v 'common')
-$(info $(BLIST))
 
 .PHONY: all clean
 .SECONDARY: $(OLIST)
