@@ -1,6 +1,6 @@
 # Advent of Code 2020
 
-My personal solutions to the Advent of Code 2020 challenges.
+My personal solutions to the [Advent of Code 2020](https://adventofcode.com/2020) challenges.
 
 ## Building
 To build the challenge solutions:
